@@ -15,7 +15,7 @@
 
 <h2>Update Book</h2>
 
-<c:url var="updateBookUrl" value="/book/updateBook"/>
+<c:url var="updateBookUrl" value="/v1/book/updateBook"/>
 <form:form action="${updateBookUrl}" method="post" modelAttribute="book">
 <form:input type="hidden" path="isbn" value="${book.isbn}"/>
 <table>

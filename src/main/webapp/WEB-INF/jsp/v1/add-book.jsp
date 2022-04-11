@@ -15,7 +15,7 @@
 
 <h2>Add Book</h2>
 
-<c:url var="addBookUrl" value="/book/addBook"/>
+<c:url var="addBookUrl" value="/v1/book/addBook"/>
 <form:form action="${addBookUrl}" method="post" modelAttribute="book">
 <table>
 <tr>

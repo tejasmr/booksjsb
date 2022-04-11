@@ -15,9 +15,9 @@
 <table border="1|0">
 <thead>
 <tr>
-<th>isbn <a href="viewBooks?sortBy=isbn">↕️↕️</a></th>
-<th>name <a href="viewBooks?sortBy=name">↕️↕️</a></th>
-<th>author <a href="viewBooks?sortBy=author">↕️↕️</a></th>
+<th>isbn <form:form action="/v1/book/viewBooks" method="get" modelAttribute="sorter"><form:input type="hidden" path="sortBy" value="isbn"/><input type="submit" value="↕↕"></form:form></th>
+<th>name <form:form action="/v1/book/viewBooks" method="get" modelAttribute="sorter"><form:input type="hidden" path="sortBy" value="name"/><input type="submit" value="↕↕"></form:form></th>
+<th>author <form:form action="/v1/book/viewBooks" method="get" modelAttribute="sorter"><form:input type="hidden" path="sortBy" value="author"/><input type="submit" value="↕↕"></form:form></th>
 <th>delete</th>
 <th>update</th>
 </tr>

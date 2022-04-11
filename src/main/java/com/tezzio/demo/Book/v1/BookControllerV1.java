@@ -1,4 +1,4 @@
-package com.tezzio.demo.Book;
+package com.tezzio.demo.Book.v1;
 
 import java.util.List;
 
@@ -15,32 +15,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-@RequestMapping("/book")
+import com.tezzio.demo.Book.Book;
+import com.tezzio.demo.Book.BookService;
+
+@RequestMapping("/v1/book")
 @Controller
-public class BookController {
+public class BookControllerV1 {
 	@Autowired
 	private BookService bookService;
 	
 	@GetMapping("/viewBooks") 
-	public String viewBooksView(@RequestParam(required=false) String sortBy, Model model) {
-		if(sortBy == null) {
-			model.addAttribute("books", bookService.getBookList());
-			return "view-books";
+	public String viewBooksView(@ModelAttribute("sorter") Sorter sorter, Model model) {
+		if(sorter == null || sorter.getSortBy() == null) {
+			sorter = new Sorter("isbn");
+			model.addAttribute("sorter", sorter);
 		}
+		String sortBy = sorter.getSortBy();
 		if(sortBy.equalsIgnoreCase("isbn"))
 			model.addAttribute("books", bookService.sortedByIsbn());
 		else if(sortBy.equalsIgnoreCase("name"))
 			model.addAttribute("books", bookService.sortedByName());
 		else if(sortBy.equalsIgnoreCase("author"))
 			model.addAttribute("books", bookService.sortedByAuthor());
+		else
+			model.addAttribute("books", bookService.getBookList());
 		
-		return "view-books";
+		return "v1/view-books";
 	}
 	
 	@GetMapping("/addBook")
 	public String addBookView(Model model) {
 		model.addAttribute("book", new Book());
-		return "add-book";
+		return "v1/add-book";
 	}
 	
 	@RequestMapping("/updateBook")
@@ -49,12 +55,12 @@ public class BookController {
 		if(bookToUpdate == null) 
 			return "error";
 		model.addAttribute("book", bookToUpdate);
-		return "update-book";
+		return "v1/update-book";
 	}
 	
 	@PostMapping("/addBook")
 	public RedirectView addBook(@ModelAttribute("book") Book book, RedirectAttributes redirectAttributes) {
-		final RedirectView redirectView = new RedirectView("/book/addBook", true);
+		final RedirectView redirectView = new RedirectView("/v1/book/addBook", true);
 		boolean didAdd = bookService.addBook(book);
 		setFlashAttributeStatus(redirectAttributes, "addBook", didAdd);
 		redirectAttributes.addFlashAttribute("addedBookIsbn", book.getIsbn());
@@ -63,7 +69,7 @@ public class BookController {
 	
 	@RequestMapping("/deleteBook")
 	public RedirectView deleteBook(@RequestParam("isbn") String isbn, RedirectAttributes redirectAttributes) {
-		final RedirectView redirectView = new RedirectView("/book/viewBooks", true);
+		final RedirectView redirectView = new RedirectView("/v1/book/viewBooks", true);
 		boolean didDelete = bookService.deleteBook(isbn);
 		setFlashAttributeStatus(redirectAttributes, "deleteBook", didDelete);
 		redirectAttributes.addFlashAttribute("deletedBookIsbn", isbn);
@@ -72,7 +78,7 @@ public class BookController {
 	
 	@PostMapping("/updateBook") 
 	public RedirectView updateBook(@ModelAttribute("book") Book book, RedirectAttributes redirectAttributes) {
-		final RedirectView redirectView = new RedirectView("/book/viewBooks", true);
+		final RedirectView redirectView = new RedirectView("/v1/book/viewBooks", true);
 		boolean didUpdate = bookService.updateBook(book);
 		setFlashAttributeStatus(redirectAttributes, "updateBook", didUpdate);
 		redirectAttributes.addFlashAttribute("updatedBookIsbn", book.getIsbn());
