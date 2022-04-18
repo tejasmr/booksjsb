@@ -25,6 +25,7 @@ file="/WEB-INF/jsp/common/styles/common.css"%>
 <title>Books API</title>
 </head>
 <body>
+<h4 class="mb-3">Books API</h4>
 
 <table class="table">
   <thead>
