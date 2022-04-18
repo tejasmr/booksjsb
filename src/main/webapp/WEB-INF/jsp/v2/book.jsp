@@ -11,7 +11,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<title>Books</title>
+<title>Books v2</title>
 </head>
 <body>
 
@@ -69,21 +69,21 @@ toastr.options = {
 	<script>toastr.success('Successfully deleted book with ISBN ${deletedBookIsbn}', 'Delete Success')</script>
 </c:if>
 <c:if test="${deleteBookFailure}">
-	<script>toastr.success('Failed to delete book with ISBN ${deletedBookIsbn}', 'Delete Failure')</script>
+	<script>toastr.error('Failed to delete book with ISBN ${deletedBookIsbn}', 'Delete Failure')</script>
 </c:if>
 
 <c:if test="${addBookSuccess}">
 	<script>toastr.success('Successfully added book with ISBN ${deletedBookIsbn}', 'Add Success')</script>
 </c:if>
 <c:if test="${addBookFailure}">
-	<script>toastr.success('Failed to add book with ISBN ${deletedBookIsbn}', 'Add Failure')</script>
+	<script>toastr.error('Failed to add book with ISBN ${deletedBookIsbn}', 'Add Failure')</script>
 </c:if>
 
 <c:if test="${updateBookSuccess}">
 	<script>toastr.success('Successfully updated book with ISBN ${deletedBookIsbn}', 'Update Success')</script>
 </c:if>
 <c:if test="${updateBookFailure}">
-	<script>toastr.success('Failed to update book with ISBN ${deletedBookIsbn}', 'Update Failure')</script>
+	<script>toastr.error('Failed to update book with ISBN ${deletedBookIsbn}', 'Update Failure')</script>
 </c:if>
 
 </body>

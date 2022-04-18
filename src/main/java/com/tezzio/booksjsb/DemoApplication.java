@@ -1,4 +1,4 @@
-package com.tezzio.demo;
+package com.tezzio.booksjsb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,34 +1,31 @@
-package com.tezzio.demo.Book.v2;
+package com.tezzio.booksjsb.Book.v2;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.tezzio.demo.Book.Book;
-import com.tezzio.demo.Book.BookService;
-import com.tezzio.demo.Book.v1.Sorter;
+import com.tezzio.booksjsb.Book.Book;
+import com.tezzio.booksjsb.Book.Sorter;
+import com.tezzio.booksjsb.Book.v1.NPBookServiceV1;
 
 @RequestMapping("/v2/book")
 @Controller
 public class BookControllerV2 {
 	@Autowired
-	private BookService bookService;
+	private NPBookServiceV2 bookService;
 	
 	@GetMapping("/")
 	public String rootView(@ModelAttribute("sorter") Sorter sorter, Model model) {
 		if(sorter == null || sorter.getSortBy() == null) {
-			sorter = new Sorter("isbn");
+			sorter = new Sorter("isbn", "ASC");
 			model.addAttribute("sorter", sorter);
 		}
 		if(!model.containsAttribute("book"))

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add book</title>
+<title>Update Book v1</title>
 </head>
 <body>
 
@@ -34,13 +34,6 @@
 </table>
 <input type="submit" value="update"/>
 </form:form>
-
-<c:if test="${updateBookSuccess}">
-    <div id="success-message">Successfully updated Book with ISBN: ${updatedBookIsbn}</div>
-</c:if>
-<c:if test="${updateBookFailure}">
-    <div id="success-message">Failed to update Book with ISBN: ${updatedBookIsbn}</div>
-</c:if>
 
 </body>
 </html>

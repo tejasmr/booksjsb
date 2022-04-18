@@ -1,4 +1,4 @@
-package com.tezzio.demo;
+package com.tezzio.booksjsb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
