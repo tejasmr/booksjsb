@@ -25,8 +25,8 @@ public class SONPBookServiceV3 implements BookServiceV3 {
 			bookList.put("" + i, 
 					new Book(
 						"" + i, 
-						"" + (char)(65+(new Random()).nextInt(0, 26)), 
-						"" + (char)(65+(new Random()).nextInt(0, 26))
+						"" + (char)(65+(new Random()).nextInt(26)), 
+						"" + (char)(65+(new Random()).nextInt(26))
 					)
 			);
 	}
