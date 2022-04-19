@@ -1,18 +1,9 @@
-package com.tezzio.booksjsb.Book.v4;
+package com.tezzio.booksjsb.Book.v5;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.tezzio.booksjsb.Book.Book;
@@ -20,10 +11,10 @@ import com.tezzio.booksjsb.Book.Sorter;
 
 /* Persistent Book Service */
 @Service
-public class PBookServiceV4 implements BookServiceV4 {
+public class PBookServiceV5 {
 
 	@Autowired
-	private BookRepositoryV4 bookRepository;
+	private BookRepositoryV5 bookRepository;
 	
 	public List<Book> getBookList() {
 		return bookRepository.findAll();
@@ -63,4 +54,5 @@ public class PBookServiceV4 implements BookServiceV4 {
 		return bookRepository.findAll(Sort.by(Sort.Direction.ASC, sorter.getSortBy()));
 	}
 	
+
 }
