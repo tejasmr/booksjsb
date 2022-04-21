@@ -14,7 +14,7 @@ import com.tezzio.booksjsb.Book.Sorter;
 
 @RequestMapping("/v5/book")
 @RestController
-@CrossOrigin(origins="http://localhost:8080")
+@CrossOrigin(origins="https://booksjsbv5.herokuapp.com/")
 public class BookControllerV5 {
 	@Autowired
 	private PBookServiceV5 bookService;
