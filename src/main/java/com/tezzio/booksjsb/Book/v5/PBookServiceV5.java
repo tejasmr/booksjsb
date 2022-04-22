@@ -51,7 +51,7 @@ public class PBookServiceV5 {
 	public List<Book> sorted(Sorter sorter) {
 		if(sorter.getOrder().equals("DESC"))
 			return bookRepository.findAll(Sort.by(Sort.Order.desc(sorter.getSortBy())));
-		return bookRepository.findAll(Sort.by(Sort.Order.desc(sorter.getSortBy())));
+		return bookRepository.findAll(Sort.by(Sort.Order.asc(sorter.getSortBy())));
 	}
 	
 
