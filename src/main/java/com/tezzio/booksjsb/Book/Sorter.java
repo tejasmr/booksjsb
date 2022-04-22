@@ -2,6 +2,9 @@ package com.tezzio.booksjsb.Book;
 
 import java.util.function.Function;
 
+import lombok.ToString;
+
+@ToString
 public class Sorter {
 	private String sortBy;
 	private String order;
