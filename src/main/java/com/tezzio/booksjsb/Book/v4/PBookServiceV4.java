@@ -1,18 +1,9 @@
 package com.tezzio.booksjsb.Book.v4;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.tezzio.booksjsb.Book.Book;
@@ -59,8 +50,8 @@ public class PBookServiceV4 implements BookServiceV4 {
 
 	public List<Book> sorted(Sorter sorter) {
 		if(sorter.getOrder().equals("DESC"))
-			return bookRepository.findAll(Sort.by(Sort.Direction.DESC, sorter.getSortBy()));
-		return bookRepository.findAll(Sort.by(Sort.Direction.ASC, sorter.getSortBy()));
+			return bookRepository.findAll(Sort.by(Sort.Order.desc(sorter.getSortBy())));
+		return bookRepository.findAll(Sort.by(Sort.Order.asc(sorter.getSortBy())));
 	}
 	
 }

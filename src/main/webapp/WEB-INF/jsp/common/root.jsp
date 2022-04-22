@@ -66,6 +66,13 @@ file="/WEB-INF/jsp/common/styles/common.css"%>
       <td>MongoDB</td>
       <td><button class="btn btn-primary" onclick="location.href='/v4/book/'" type="button">v4</button></td>
     </tr>
+    <tr>
+      <th scope="row">v5</th>
+      <td>Angular</td>
+      <td>Java Spring Boot REST API</td>
+      <td>MongoDB</td>
+      <td><button class="btn btn-primary" onclick="location.href='https://booksjsbv5.herokuapp.com/'" type="button">v5</button></td>
+    </tr>
   </tbody>
 </table>
 </body>
