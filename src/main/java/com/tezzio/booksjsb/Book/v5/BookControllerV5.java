@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tezzio.booksjsb.Book.Book;
@@ -20,11 +21,8 @@ public class BookControllerV5 {
 	private PBookServiceV5 bookService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Book> rootView(@RequestBody(required=false) Sorter sorter) {
-		if(sorter == null || sorter.getSortBy() == null || sorter.getOrder() == null) {
-			sorter = new Sorter("isbn", "ASC");
-		}
-		return bookService.sorted(sorter);
+	public List<Book> rootView(@RequestParam(required=true) String sortBy, @RequestParam(required=true) String order) {
+		return bookService.sorted(new Sorter(sortBy, order));
 	}
 
 	@RequestMapping(value = "/addBook", method=RequestMethod.POST)
