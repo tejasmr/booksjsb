@@ -2,7 +2,7 @@
 
 Books API with various (pure HTML, MinCSS, Bootstrap, Angular) front-end and with Java Spring Boot back-end.
 
-Hosted on: https://booksjsb.herokuapp.com/
+> Hosted on: https://booksjsb.herokuapp.com/
 
 ### Root View
 
